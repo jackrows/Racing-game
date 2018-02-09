@@ -1,5 +1,5 @@
 /***********************************************************************
-*				 Header for the Teams-Companies
+*			Header for the Teams-Companies
 * The values of the fields will fill in corresponding each team power
 ************************************************************************/
 #ifndef	__Racing_Team_H__
@@ -26,6 +26,7 @@ typedef Team* p_Team;
 
 /*Declaration of the functions of racing teams*/
 p_Team			TeamCreation();					/*Create the team and initialize the attributes*/
+char*			GetTeamName(const Team);		/*Return the name of the team*/
 unsigned short	GetTeamTeamwork(const Team);	/*Return the power level of the team*/
 unsigned short	GetTeamStrategy(const Team);	/*Return the teamwork value of the team*/
 int				GetTeamPitStop(const Team);		/*Return the strategy value of the team*/
