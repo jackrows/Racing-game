@@ -11,11 +11,11 @@
 
 #define	TOTAL_TEAMS	6
 
-const char* ConstructorTeams[TOTAL_TEAMS] = {"McLaren", "Ferrari", "Red Bull", "Renault", "Mercented", "Force India"};
+
 
 /*Struct definition Team's members/fields/characteristics*/
 typedef struct Team {
-	char 			*name;		/*Store the name of each team*/
+	const char		*name;		/*Store the name of each team*/
 	unsigned short	power;		/*General financial and potential staff. The rest fields will effect from this. Range  1-10*/
 	unsigned short	teamwork;	/*Store teamworking level. Range 1-10*/
 	unsigned short	strategy;	/*Store team strategy level. Range 1-10*/
