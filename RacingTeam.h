@@ -31,5 +31,7 @@ unsigned short	GetTeamTeamwork(const Team);	/*Return the power level of the team
 unsigned short	GetTeamStrategy(const Team);	/*Return the teamwork value of the team*/
 int				GetTeamPitStop(const Team);		/*Return the strategy value of the team*/
 void			SetAttributes(p_Team);			/*Fill in the fields of team random values*/
+void			TeamPrint(const p_Team);		/*Printing the values of teams*/
+void			TeamDestroy(p_Team);			/*Free the allocated memory*/
 
 #endif
