@@ -1,4 +1,5 @@
-/**/
+/*  Header for the Teams-Companies
+* */
 #ifndef	__RACING_TEAM_H__
 #define __RACING_TEAM_H__
 
