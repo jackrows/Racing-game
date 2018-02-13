@@ -15,6 +15,7 @@ int main(int argc, char **argv)
 	int i;									/*Variable to index the array of teams*/
 	p_Team Teams = TeamCreation();			/*Create the array of teams with TOTAL TEAMS size*/
 	p_Driver Drivers = DriverCreation();	/*Create the array of drivers*/
+	/*float final_time[TOTAL_TEAMS];			Array with race time of each team*/
 	if(Teams == NULL)
 	{
 		printf("\n\t#Error in TeamCreation at malloc function!\n");
@@ -29,8 +30,28 @@ int main(int argc, char **argv)
 	}
 	DriverSetAttributes(Drivers);		/*Set random values to driver attributes*/
 	TeamSetAttributes(Teams, Drivers);	/*Set random valies to team attributes and assign a driver to the team*/
-	TeamPrint(Teams);
-	DriverPrint(Drivers);
 	
+	/*DriverPrint(Drivers);*/
+	
+	TeamRacingAbility(Teams);		/*Calculate the racing ability of teams*/
+	
+	/*for(i = 0; i < TOTAL_TEAMS; i++)
+	{
+		final_time[i] = TeamFinalTime(Teams[i]);
+	}
+	
+	FinalStanding(final_time);
+	
+	for(i = 0; i < TOTAL_TEAMS; i++)
+	{
+		
+	}*/
+	
+	StartRace(Teams);
+	
+/*	TeamPrint(Teams);*/
+	
+	DriverDestroy(Drivers);
+	TeamDestroy(Teams);
 	return 0;
 }

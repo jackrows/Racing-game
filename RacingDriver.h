@@ -26,11 +26,12 @@ typedef struct Driver {
 typedef Driver* p_Driver; 	/*pointer on struct Driver*/
 
 /*Declaration of functions about driver*/
-p_Driver	DriverCreation();
-void		DriverSetAttributes(p_Driver);
-Driver		GetDriver(const p_Driver, int);
-void 		DriverPrint(const p_Driver);
-void		DriverPrintOne(const p_Driver);
-void		DriverDestroy(p_Driver);
+p_Driver	DriverCreation();						/*Create the array with the drivers and initialize the attributes*/
+void		DriverSetAttributes(p_Driver);			/*Set driver's attributes with random values*/
+Driver		GetDriver(const p_Driver, int);			/*Get back the driver from array that position specify*/
+void 		DriverPrint(const p_Driver);			/*Print whole the driver array*/
+void		DriverPrintOne(const p_Driver);			/*Print the values from just one driver*/
+void		DriverDestroy(p_Driver);				/*Free the located memory for name and driver array*/
+float		DriverRacingAbility(const p_Driver);	/*Calculate the final driving ability of driver depend his attributes*/
 
 #endif

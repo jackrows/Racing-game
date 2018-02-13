@@ -77,3 +77,26 @@ void DriverPrint(const p_Driver driver)
 		printf("-Determination: %d\n", driver[i].determination);
 	}
 }
+
+/*Free the located memory for name string and whole driver array*/
+void DriverDestroy(p_Driver driver)
+{
+	int i;
+	for(i = 0; i < TOTAL_DRIVERS; i++)
+	{
+		free(driver[i].name);
+	}
+	free(driver);
+}
+
+/*Calculate the total racing ability of driver accordingly his attribute's values
+* The ability calculate from the form: Ability = 1.6speed + 1.9acceleration + 1.8handling + 1.4determination*/
+float DriverRacingAbility(const p_Driver driver)
+{
+	float ability = 0.0;
+	float factor_sp = 1.6, factor_ac = 1.9, factor_ha = 1.8, factor_dt = 1.4;
+	
+	ability = factor_sp * driver->speed + factor_ac * driver->acceleration + factor_ha * driver->handling + factor_dt * driver->determination;
+/*	printf("\n#%s ability = %.2f\n",driver->name, ability);*/
+	return ability;
+}
