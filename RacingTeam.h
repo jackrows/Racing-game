@@ -9,7 +9,7 @@
 
 #define	TOTAL_TEAMS	6
 #define TEAM_NAME 	15
-#define TOTAL_LAPS	10		
+#define TOTAL_LAPS	6		
 
 /*Struct definition Team's members/fields/characteristics*/
 typedef struct Team {
@@ -36,5 +36,6 @@ void			TeamDestroy(p_Team);						/*Free the allocated memory*/
 void			TeamRacingAbility(p_Team);					/*Calculate the total team ability adding her driver ability*/
 float			TeamFinalTime(const Team);					/*Calculate the race lapse time for the teams*/
 void			StartRace(p_Team);
+int 			TeamAssignDriverRandom(p_Team, const p_Driver);
 
 #endif

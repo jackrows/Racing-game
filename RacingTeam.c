@@ -40,6 +40,9 @@ void TeamSetAttributes(p_Team team, const p_Driver drivers)
 	srand((unsigned)time(&t));	/*Initialize the seed for random number generator(rand)*/
 	
 	int i;
+	int used_driver[TOTAL_TEAMS];
+	for(i = 0; i < TOTAL_TEAMS; i++)
+		used_driver[i] = -1;
 	int min = 1;	/*Minimum value for attributes, used on rand()*/
 	short low = 5, medium = 7, high = ATTRIBUTE_MAX;	/*low: small team power, medium: medium team power, high: strong team power*/
 	for(i = 0; i < TOTAL_TEAMS; i++)
@@ -70,8 +73,31 @@ void TeamSetAttributes(p_Team team, const p_Driver drivers)
 			team[i].pit_stop = (rand() % (high + 1 - min)) + min;
 			min = 1;
 		}
-		team[i].driver = GetDriver(drivers, i);		/*Assign driver to team racing*/
+	/*	team[i].driver = GetDriver(drivers, i);		*Assign driver to team racing*/
+		int j;
+		int assign = TeamAssignDriverRandom(&team[i], drivers);
+	/*	int flag = -1;*/
+		
+		for(j = 0; j < i; j++)
+		{
+			if(assign == used_driver[j])
+			{
+				/*flag = 1;*/
+				assign = TeamAssignDriverRandom(&team[i], drivers);
+				j = -1;
+			}
+		}
+		used_driver[i] = assign;
 	}
+}
+
+/**/
+int TeamAssignDriverRandom(p_Team team, const p_Driver drivers)
+{
+	srand((unsigned)time(NULL));
+	int i = rand() % TOTAL_TEAMS;
+	team->driver = GetDriver(drivers, i);
+	return i;
 }
 
 /*Printing the values of all teams*/
@@ -115,7 +141,7 @@ void TeamRacingAbility(p_Team team)
 		driver_ab = DriverRacingAbility(&team[i].driver);
 		team_ab = (factor_po * team[i].power) + (factor_st * team[i].strategy) + (factor_tw * team[i].teamwork) + (factor_ps * team[i].pit_stop) + (factor_dr * driver_ab);
 		team[i].racing = team_ab;
-		printf(" %s race ability: %.3f | %s skill: %.2f\n", team[i].name, team[i].racing, team[i].driver.name, driver_ab);
+/*		printf(" %s race ability: %.3f | %s skill: %.2f\n", team[i].name, team[i].racing, team[i].driver.name, driver_ab);*/
 	}
 }
 
@@ -129,31 +155,57 @@ float TeamFinalTime(const Team team)
 	return timing;
 }
 
-/**/
+/*Perfom the race, display the result of each lap*/
 void StartRace(p_Team team)
 {
 	int i, laps = 1;
 	float standing[TOTAL_TEAMS][2];
+/*	float final_standing[TOTAL_TEAMS][2];*/
 	float random_factor = 0;
+	
+	/*for(i = 0; i < TOTAL_TEAMS; i++)
+		final_standing[i][0] = 0;*/
 	
 	printf("\n####### The Race began! 3, 2, 1, GO!!#######\n");
 	while(laps <= TOTAL_LAPS)
 	{
 		printf("\n***************************************\n");
-		printf("Lap number %d/%d:\n", laps, TOTAL_LAPS);
-		random_factor = (float)rand()/(float)(RAND_MAX/1.6);
+		printf("#Lap number %d/%d:\n", laps, TOTAL_LAPS);
+		
+		sleep(3);	/*For friendlier runtime display*/
 		for(i = 0; i < TOTAL_TEAMS; i++)
 		{
+			random_factor = (float)rand()/(float)(RAND_MAX/2.0);
 			standing[i][0] = TeamFinalTime(team[i]) + random_factor;
 			standing[i][1] = (float)i;
+			/*final_standing[i][0] += standing[i][0];
+			final_standing[i][1] = standing[i][1];*/
 		}
-		SortingStanding(standing);
-		printf("#Results:\n");
+/*		int j;
 		for(i = 0; i < TOTAL_TEAMS; i++)
 		{
-			printf("-%d. %s - %.4f\n", i+1, team[(int)standing[i][1]].driver.name, standing[i][0]);
+			for(j = 0; j < 2; j++)
+				printf("%.2f ", standing[i][j]);
+			printf("\n");
 		}
+		
+		TeamPrint(team);*/
+		SortingTimes(standing);
+		/*TeamPrint(team);
+		printf("\nafter sorting\n");
+		for(i = 0; i < TOTAL_TEAMS; i++)
+		{
+			for(j = 0; j < 2; j++)
+				printf("%.2f ", standing[i][j]);
+			printf("\n");
+		}*/
+		printf(" #Results:\n");
+		for(i = 0; i < TOTAL_TEAMS; i++)
+			printf("-%d. %s - %.4f\n", i+1, team[(int)standing[i][1]].driver.name, standing[i][0]);
+		
 		printf("\n***************************************\n");
 		laps++;
 	}
+	/*SortingTimes(final_standing);	Sort the total times of drivers*/
+	FinalStanding(standing, team);	/*Final results and standing*/
 }

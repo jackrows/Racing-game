@@ -8,10 +8,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <unistd.h>
 /*#include "RacingTeam.h"*/
 
 #define ATTRIBUTE_MAX	10
-#define	TOTAL_DRIVERS	6
+#define	TOTAL_DRIVERS	7
 #define DRIVER_NAME		13	
 
 /*Definition of the driver struct*/

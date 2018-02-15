@@ -4,15 +4,26 @@
 
 #include "GeneralFunctions.h"
 
-/*void FinalStanding(float times[], p_Team team)
+void FinalStanding(float times[][2], p_Team team)
 {
-	int i, index = 0;
-	float min = 0.0, temp = 0.0;
-	float standing[TOTAL_TEAMS][2];
-	
-}*/
+	printf("\n\n#The final standing of race:\n");
+	int i;
+	for(i = 0; i < TOTAL_TEAMS; i++)
+	{
+		printf("-%d. %s - %.4f", i+1, team[(int)times[i][1]].driver.name, times[i][0]);
+		if(i == 0)	/*Big winner*/
+			printf(" - BIG WINNEEEEER!!!!\n");
+		if(i == 1)	/*Silver winner*/
+			printf(" - Second at pedestal!!\n");
+		if(i == 2)	/*Bronze winner*/
+			printf(" - Third at pedestal!!\n");
+		printf("\n");
+	}
+}
 
-void SortingStanding(float standing[][2])
+/*Sorting the time of drivers each lap
+* This function help to print the result properly*/
+void SortingTimes(float standing[][2])
 {
 	int i, j;
 	for(i = 0; i < TOTAL_TEAMS -1; i++)
@@ -27,9 +38,26 @@ void SortingStanding(float standing[][2])
 	}
 }
 
-void Swap(float* time1, float* time2)
+/*Switch the whole row of standing array
+* Each row has two element, the time and the indexing with the driver*/
+void Swap(float time1[], float time2[])
 {
-	float temp = *time1;
-	*time1 = *time2;
-	*time2 = temp;
+	float temp[2];
+	int i;
+	for(i = 0; i < 2; i++)
+		temp[i] = time1[i];
+	for(i = 0; i < 2; i++)
+		time1[i] = time2[i];
+	for(i = 0; i < 2; i++)
+		time2[i] = temp[i];
 }
+
+/*int ReadTeamsAndDrivers(FILE* fp, char teams[], char drivers[])
+{
+	int i;
+	char* filename = "C:/Users/a.polychronopoulos/Documents/GIT/projects/C-Racing/Info.txt";
+	fp = fopen(filename, "r");
+	if(fp == NULL)
+		return NULL;
+	return 0;
+}*/

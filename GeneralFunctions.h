@@ -7,8 +7,9 @@
 #include "RacingTeam.h"
 
 /*Declaration of General functions*/
-void FinalStanding(float [], p_Team);			/*Sorting the time of teams*/
-void SortingStanding(float [][2]);
-void Swap(float*, float*);
+void FinalStanding(float [][2], p_Team);			
+void SortingTimes(float [][2]);				/*Sorting the time of teams*/
+void Swap(float*, float*);					/*Switch the rows of each lap driver's time*/
+/*int ReadTeamsAndDrivers(FILE* f, char a[], char b[])*/
 
 #endif

@@ -4,7 +4,7 @@
 
 #include "RacingDriver.h"
 
-const char* DriversName[TOTAL_DRIVERS] = {"Schumacher", "Hamilton", "Senna", "Niki Lauda", "Vettel", "Raikkonen"}; /*Static array with driver's names*/
+const char* DriversName[TOTAL_DRIVERS] = {"Schumacher", "Hamilton", "Senna", "Niki Lauda", "Vettel", "Raikkonen", "Colin McRay"}; /*Static array with driver's names*/
 
 /*Allocate memory for the drivers and initialize their attributes*/
 p_Driver DriverCreation()
