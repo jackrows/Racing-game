@@ -26,16 +26,12 @@ typedef Team* p_Team;
 
 /*Declaration of the functions of racing teams*/
 p_Team			TeamCreation();								/*Create the team and initialize the attributes*/
-char*			GetTeamName(const Team);					/*Return the name of the team*/
-unsigned short	GetTeamTeamwork(const Team);				/*Return the power level of the team*/
-unsigned short	GetTeamStrategy(const Team);				/*Return the teamwork value of the team*/
-int				GetTeamPitStop(const Team);					/*Return the strategy value of the team*/
 void			TeamSetAttributes(p_Team, const p_Driver);	/*Fill in the fields of team random values*/
 void			TeamPrint(const p_Team);					/*Printing the values of teams*/
 void			TeamDestroy(p_Team);						/*Free the allocated memory*/
 void			TeamRacingAbility(p_Team);					/*Calculate the total team ability adding her driver ability*/
 float			TeamFinalTime(const Team);					/*Calculate the race lapse time for the teams*/
-void			StartRace(p_Team);
-int 			TeamAssignDriverRandom(p_Team, const p_Driver);
+void			StartRace(p_Team);							/*Leading function that perform the race, display the result at every lap and the winner*/
+int 			TeamAssignDriverRandom(p_Team, const p_Driver);	/*Assign driver to each team randomly at each program running*/
 
 #endif

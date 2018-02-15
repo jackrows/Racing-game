@@ -4,6 +4,7 @@
 
 #include "GeneralFunctions.h"
 
+/*Display the final standing, after the laps finished*/
 void FinalStanding(float times[][2], p_Team team)
 {
 	printf("\n\n#The final standing of race:\n");

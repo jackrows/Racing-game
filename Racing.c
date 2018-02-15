@@ -12,10 +12,8 @@ int main(int argc, char **argv)
 	(void)argv;
 	
 	/*Variables*/
-	/*int i;									Variable to index the array of teams*/
 	p_Team Teams = TeamCreation();			/*Create the array of teams with TOTAL TEAMS size*/
 	p_Driver Drivers = DriverCreation();	/*Create the array of drivers*/
-	/*float final_time[TOTAL_TEAMS];			Array with race time of each team*/
 	
 	if(Teams == NULL)	/*Check for the malloc on TeamCreation*/
 	{
@@ -38,29 +36,11 @@ int main(int argc, char **argv)
 	/*Set random values to team attributes and assign a driver to the team*/
 	TeamSetAttributes(Teams, Drivers);	
 	
-	/*DriverPrint(Drivers);*/
-	
 	/*Calculate the racing ability of teams*/
 	TeamRacingAbility(Teams);		
 	
-	
-	/*TeamPrint(Teams);
-	for(i = 0; i < TOTAL_TEAMS; i++)
-	{
-		final_time[i] = TeamFinalTime(Teams[i]);
-	}
-	
-	FinalStanding(final_time);
-	
-	for(i = 0; i < TOTAL_TEAMS; i++)
-	{
-		
-	}*/
-	
 	/*Start the race*/
 	StartRace(Teams);
-	
-/*	TeamPrint(Teams);*/
 	
 	/*Free the located memory*/
 	DriverDestroy(Drivers);

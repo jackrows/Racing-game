@@ -36,8 +36,8 @@ void DriverSetAttributes(p_Driver driver)
 	srand((unsigned)time(&t));	/*Initialize the seed for random number generator(rand)*/
 	
 	int i;
-	int min = 1;	/*Minimum value for attributes, used on rand()*/
-	int max = ATTRIBUTE_MAX;
+	int min = 1;				/*Minimum value for attributes, used on rand()*/
+	int max = ATTRIBUTE_MAX;	/*Maximum value for attributes, used on rand()*/
 	
 	for(i = 0; i < TOTAL_DRIVERS; i++)
 	{
@@ -93,8 +93,8 @@ void DriverDestroy(p_Driver driver)
 * The ability calculate from the form: Ability = 1.6speed + 1.9acceleration + 1.8handling + 1.4determination*/
 float DriverRacingAbility(const p_Driver driver)
 {
-	float ability = 0.0;
-	float factor_sp = 1.6, factor_ac = 1.9, factor_ha = 1.8, factor_dt = 1.4;
+	float ability = 0.0;	/*Store the racing ability*/
+	float factor_sp = 1.6, factor_ac = 1.9, factor_ha = 1.8, factor_dt = 1.4;	/*Affect for each attribute*/
 	
 	ability = factor_sp * driver->speed + factor_ac * driver->acceleration + factor_ha * driver->handling + factor_dt * driver->determination;
 /*	printf("\n#%s ability = %.2f\n",driver->name, ability);*/
