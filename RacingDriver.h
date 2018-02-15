@@ -9,11 +9,10 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
-/*#include "RacingTeam.h"*/
 
-#define ATTRIBUTE_MAX	10
-#define	TOTAL_DRIVERS	7
-#define DRIVER_NAME		13	
+#define ATTRIBUTE_MAX	10		/*Maximul level of driver attributes*/
+#define	TOTAL_DRIVERS	7		/*Total drivers that exist in static array*/
+#define DRIVER_NAME		20		/*Size of driver's name that will be located in memory*/
 
 /*Definition of the driver struct*/
 typedef struct Driver {

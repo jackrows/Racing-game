@@ -97,6 +97,5 @@ float DriverRacingAbility(const p_Driver driver)
 	float factor_sp = 1.6, factor_ac = 1.9, factor_ha = 1.8, factor_dt = 1.4;	/*Affect for each attribute*/
 	
 	ability = factor_sp * driver->speed + factor_ac * driver->acceleration + factor_ha * driver->handling + factor_dt * driver->determination;
-/*	printf("\n#%s ability = %.2f\n",driver->name, ability);*/
 	return ability;
 }

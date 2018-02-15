@@ -52,13 +52,3 @@ void Swap(float time1[], float time2[])
 	for(i = 0; i < 2; i++)
 		time2[i] = temp[i];
 }
-
-/*int ReadTeamsAndDrivers(FILE* fp, char teams[], char drivers[])
-{
-	int i;
-	char* filename = "C:/Users/a.polychronopoulos/Documents/GIT/projects/C-Racing/Info.txt";
-	fp = fopen(filename, "r");
-	if(fp == NULL)
-		return NULL;
-	return 0;
-}*/

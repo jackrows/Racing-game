@@ -7,9 +7,9 @@
 
 #include "RacingDriver.h"
 
-#define	TOTAL_TEAMS	6
-#define TEAM_NAME 	15
-#define TOTAL_LAPS	6		
+#define	TOTAL_TEAMS	6		/*Total teams that exist in static array*/
+#define TEAM_NAME 	15		/*Size of team's name that will commit on memory*/
+#define TOTAL_LAPS	6		/*The number of the willing laps*/
 
 /*Struct definition Team's members/fields/characteristics*/
 typedef struct Team {
